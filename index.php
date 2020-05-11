@@ -24,6 +24,16 @@
         }
     }
 
+    // decode data 
+    if("decode" == $task){
+        if(isset($_POST['data']) && !empty($_POST['data'])){
+            $encodeData = $_POST['data'];
+            if($encodeData != ''){
+                $scrambleData = decodeData($encodeData,$key);
+            }
+        }
+    }
+
 
 ?>
 
@@ -53,10 +63,10 @@
                     <div class="card-body">
                         <div class="form-group">                                
                             <a href="index.php?task=encode" class="btn btn-sm btn-info">Encode</a> / 
-                            <a href="index.php?taks=decode" class="btn btn-sm btn-success">Decode</a> /
+                            <a href="index.php?task=decode" class="btn btn-sm btn-success">Decode</a> /
                             <a href="index.php?task=key" class="btn btn-sm btn-warning" >Generate Key</a>
                         </div>
-                        <form method="POST" action="index.php">   
+                        <form method="POST" action="index.php<?php echo ("decode" == $task)?'?task=decode':''; ?>"">   
                             <div class="form-group">
                                 <label for="key">Key</label>
                                 <input type="text" class="form-control" id="key" name="key" <?php showGenerateKey($key); ?> >
