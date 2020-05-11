@@ -5,16 +5,25 @@
         $task = $_GET['task'];
     }
 
-    $originalKey = "abcdfghijklmnopqrstuvwxyz1234567890";
-
+    $key = "abcdfghijklmnopqrstuvwxyz1234567890";
     // generate key
     if("key" == $task){
-        $keyOriginal = str_split($originalKey);
+        $keyOriginal = str_split($key);
         shuffle($keyOriginal);
         $key = join("",$keyOriginal);
     }else if(isset($_POST['key']) && !empty($_POST['key'])){
         $key = $_POST['key'];
     }
+
+
+    // encode data
+    if("encode" == $task){
+        if(isset($_POST['data']) && !empty($_POST['data'])){
+            $originalData = $_POST['data'];
+            $scrambleData =  scrambleData($originalData,$key);
+        }
+    }
+
 
 ?>
 
@@ -43,8 +52,8 @@
                     </div>
                     <div class="card-body">
                         <div class="form-group">                                
-                            <a href="" class="btn btn-sm btn-info">Encode</a> / 
-                            <a href="" class="btn btn-sm btn-success">Decode</a> /
+                            <a href="index.php?task=encode" class="btn btn-sm btn-info">Encode</a> / 
+                            <a href="index.php?taks=decode" class="btn btn-sm btn-success">Decode</a> /
                             <a href="index.php?task=key" class="btn btn-sm btn-warning" >Generate Key</a>
                         </div>
                         <form method="POST" action="index.php">   
@@ -54,11 +63,11 @@
                             </div>
                             <div class="form-group">
                                 <label for="data">Data</label>
-                                <textarea class="form-control" name="data" id="data" cols="30" rows="3"></textarea>
+                                <textarea class="form-control" name="data" id="data" cols="30" rows="3"><?php echo ($_POST['data'])??'' ?></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="result">Result</label>
-                                <textarea class="form-control" name="result" id="result" cols="30" rows="3"></textarea>
+                                <textarea class="form-control" name="result" id="result" cols="30" rows="3"><?php echo ($scrambleData)??''; ?></textarea>
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
