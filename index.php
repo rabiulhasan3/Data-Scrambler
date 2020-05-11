@@ -1,3 +1,21 @@
+<?php
+    include_once("functions.php");
+    $task = "encode";
+    if(isset($_GET['task']) && !empty($_GET['task'])){
+        $task = $_GET['task'];
+    }
+
+    $originalKey = "abcdfghijklmnopqrstuvwxyz1234567890";
+
+    // generate key
+    if("key" == $task){
+        $keyOriginal = str_split($originalKey);
+        shuffle($keyOriginal);
+        $key = join("",$keyOriginal);
+    }
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -22,16 +40,15 @@
                         Data Scramber Mini Project For ( Procedural PHP )
                     </div>
                     <div class="card-body">
-                        <form>
-                            <div class="form-group">                                
-                                <a href="" class="btn btn-sm btn-info">Encode</a> / 
-                                <a href="" class="btn btn-sm btn-success">Decode</a> /
-                                <a href="" class="btn btn-sm btn-warning" >Generate Key</a>
-                            </div>
-
+                        <div class="form-group">                                
+                            <a href="" class="btn btn-sm btn-info">Encode</a> / 
+                            <a href="" class="btn btn-sm btn-success">Decode</a> /
+                            <a href="index.php?task=key" class="btn btn-sm btn-warning" >Generate Key</a>
+                        </div>
+                        <form>   
                             <div class="form-group">
                                 <label for="key">Key</label>
-                                <input type="text" class="form-control" id="key" name="key">
+                                <input type="text" class="form-control" id="key" name="key" <?php showGenerateKey($key); ?> >
                             </div>
                             <div class="form-group">
                                 <label for="data">Data</label>
