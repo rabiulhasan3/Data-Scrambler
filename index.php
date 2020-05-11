@@ -12,6 +12,8 @@
         $keyOriginal = str_split($originalKey);
         shuffle($keyOriginal);
         $key = join("",$keyOriginal);
+    }else if(isset($_POST['key']) && !empty($_POST['key'])){
+        $key = $_POST['key'];
     }
 
 ?>
@@ -45,7 +47,7 @@
                             <a href="" class="btn btn-sm btn-success">Decode</a> /
                             <a href="index.php?task=key" class="btn btn-sm btn-warning" >Generate Key</a>
                         </div>
-                        <form>   
+                        <form method="POST" action="index.php">   
                             <div class="form-group">
                                 <label for="key">Key</label>
                                 <input type="text" class="form-control" id="key" name="key" <?php showGenerateKey($key); ?> >

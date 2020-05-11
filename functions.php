@@ -1,7 +1,6 @@
 <?php
-    function showGenerateKey($key){
-       global $task;
-       if("key" == $task){
-           printf(" value = '%s' ",$key);
-       }
-    }
+function showGenerateKey($key) {
+    global $task;
+    printf(" value = '%s' ", $key);
+
+}
