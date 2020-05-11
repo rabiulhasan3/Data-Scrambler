@@ -5,7 +5,7 @@
         $task = $_GET['task'];
     }
 
-    $key = "abcdfghijklmnopqrstuvwxyz1234567890";
+    $key = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdfghijklmnopqrstuvwxyz1234567890";
     // generate key
     if("key" == $task){
         $keyOriginal = str_split($key);
@@ -69,7 +69,7 @@
                         <form method="POST" action="index.php<?php echo ("decode" == $task)?'?task=decode':''; ?>"">   
                             <div class="form-group">
                                 <label for="key">Key</label>
-                                <input type="text" class="form-control" id="key" name="key" <?php showGenerateKey($key); ?> >
+                                <input type="text" class="form-control" id="key" name="key"  <?php showGenerateKey($key); ?> >
                             </div>
                             <div class="form-group">
                                 <label for="data">Data</label>

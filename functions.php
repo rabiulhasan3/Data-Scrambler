@@ -7,7 +7,7 @@ function showGenerateKey($key) {
 
 // data encoding
 function scrambleData($originalData, $key) {
-    $originalKey        = "abcdfghijklmnopqrstuvwxyz1234567890";
+    $originalKey        = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdfghijklmnopqrstuvwxyz1234567890";
     $data               = '';
     $originalDataLength = strlen($originalData);
     for ($i = 0; $i < $originalDataLength; $i++) {
@@ -24,7 +24,7 @@ function scrambleData($originalData, $key) {
 
 // decode data
 function decodeData($encodeData, $key) {
-    $originalKey      = "abcdfghijklmnopqrstuvwxyz1234567890";
+    $originalKey      = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdfghijklmnopqrstuvwxyz1234567890";
     $data             = '';
     $encodeDataLenght = strlen($encodeData);
     for ($i = 0; $i < $encodeDataLenght; $i++) {
